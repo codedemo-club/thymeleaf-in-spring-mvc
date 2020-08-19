@@ -20,13 +20,14 @@ import java.util.Locale;
 public class SpringWebConfig implements WebMvcConfigurer {
 
     /**
-     * 注册Student转换器
+     * 注册转换器
      *
      * @param registry 转换器注册商
      */
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addFormatter(new StudentFormatter());
+        registry.addFormatterForFieldType(Student.class, new StudentFormatter());
+        registry.addFormatter(new NameFormatter());
     }
 
     /**
