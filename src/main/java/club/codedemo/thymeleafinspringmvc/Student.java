@@ -1,14 +1,23 @@
 package club.codedemo.thymeleafinspringmvc;
 
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * 学生，用于绑定输入项
+ * @author panjie
+ */
 public class Student {
 
+    /**
+     * 非空校验
+     */
     @NotNull
     private Long id;
 
+    /**
+     * 最小、最大长度校验
+     */
     @Size(min = 2, max = 30)
     private String name;
 
