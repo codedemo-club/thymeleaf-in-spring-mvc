@@ -9,30 +9,32 @@
     <title>首页</title>
 </head>
 <body>
-    <h1 th:text="#{welcome}"></h1>
-    <h2 th:text="${currentUser}"></h2>
-    <a href="toggleLocale">变更语言</a>
-    <a href="student/add">添加学生</a>
+<h1 th:text="#{welcome}"></h1>
+<h2 th:text="${currentUser}"></h2>
+<a href="toggleLocale">变更语言</a>
+<a href="student/add">添加学生</a>
 
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>姓名</th>
-            <th>性别</th>
-            <th>性别</th>
-            <th>应用formatter后输出</th>
-        </tr>
-        <tr th:each="student: ${students}">
-            <td th:text="${student.id}"></td>
-            <td th:text="${student.name}"></td>
-            <td th:if="${student.sex}" th:text="男"></td>
-            <td th:unless="${student.sex}" th:text="女"></td>
-            <td th:switch="${student.sex}">
-                <span th:case="true" th:text="男"></span>
-                <span th:case="false" th:text="女"></span>
-            </td>
-            <td th:text="${{student}}"></td>
-        </tr>
-    </table>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>性别</th>
+        <th>应用formatter后输出</th>
+        <th>boolean类型转换</th>
+    </tr>
+    <tr th:each="student: ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${{student.name}}"></td>
+        <td th:if="${student.sex}" th:text="男"></td>
+        <td th:unless="${student.sex}" th:text="女"></td>
+        <td th:switch="${student.sex}">
+            <span th:case="true" th:text="男"></span>
+            <span th:case="false" th:text="女"></span>
+        </td>
+        <td th:text="${{student}}"></td>
+        <td th:text="${#conversions.convert(student.sex, 'String')}"></td>
+    </tr>
+</table>
 </body>
 </html>

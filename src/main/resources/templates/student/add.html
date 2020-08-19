@@ -13,24 +13,27 @@
     <table border="1">
         <tr>
             <td>ID</td>
-            <td><input type="number" th:field="*{id}" /></td>
-            <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">id的校验信息</td>
+            <td><input type="number" th:field="*{id}"/></td>
+            <td th:if="${#fields.errors('id')}" th:errors="*{id}">id校验信息</td>
         </tr>
         <tr>
             <td>姓名</td>
-            <td><input type="text" th:field="*{name}" /></td>
+            <td><input type="text" th:field="*{name}"/></td>
             <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name校验信息</td>
         </tr>
         <tr>
-            <td><input type="submit" value="提交" /></td>
+            <td><input type="submit" value="提交"/></td>
         </tr>
     </table>
     <h1 th:if="${#fields.hasErrors()}">发生错误</h1>
     <ul>
-        <li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+        <li th:each="err : ${#fields.errors('*')}" th:text="${err}"/>
     </ul>
     <ul>
-        <li th:each="err : ${#fields.errors('all')}" th:text="${err}" />
+        <li th:each="err : ${#fields.errors('all')}" th:text="${err}"/>
+    </ul>
+    <ul>
+        <li th:each="err : ${#fields.errors('global')}" th:text="${err}" />
     </ul>
 </form>
 </body>
